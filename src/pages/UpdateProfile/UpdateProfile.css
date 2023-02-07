@@ -1,0 +1,40 @@
+.update-form {
+  box-sizing: border-box;
+  width: 1060px;
+  margin: 50px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  border-radius: 3px;
+
+}
+
+h4 {
+  color: rgb(29, 161, 242);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-top: 10px !important;
+}
+
+.button {
+  width: 300px;
+  height: 50px;
+  font-size: 25px;
+  background-color: grey;
+  border-radius: 10px;
+  color: white;
+  border: none;
+}
+
+.button:hover {
+  background-color: rgb(29, 161, 242);
+}
+
+.center {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.upload{
+  
+}
+
+

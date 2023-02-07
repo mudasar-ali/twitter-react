@@ -1,0 +1,46 @@
+.edit-btn {
+  border-radius: 25px !important;
+  border: 1px solid black !important;
+  padding: 10px !important;
+}
+
+.img_circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.tweets-span {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none solid rgb(15, 20, 25);
+  padding-bottom: 100px
+}
+
+.fixed {
+  position: fixed;
+  overflow-y: auto;
+  height: 100%;
+
+}
+
+
+
+.main {
+  padding: 20px !important;
+  margin-top: 30px !important;
+}
+
+
+
+
+
+
+
+
+
+.following {
+  font-size: 14px;
+  line-height: 16px;
+}

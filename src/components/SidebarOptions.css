@@ -1,0 +1,44 @@
+.side_options:hover {
+  background-color: lightgray;
+  border-radius: 30px;
+
+}
+
+.side_options {
+  padding: 10px;
+}
+
+.sidebar-option {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.side-icon {
+  font-size: 25px;
+}
+
+
+
+.side-bar-icon {
+  color: rgb(29, 155, 240);
+  font-size: 35px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+
+
+.tweet-bton {
+  background-color: rgb(29, 161, 242);
+  border: 2px solid rgb(29, 161, 242);
+  border-radius: 150px;
+  color: white;
+  font-weight: bolder;
+
+  padding: 10px 0px;
+
+}
+
+.sidebar-option.active {
+  font-weight: bold;
+}

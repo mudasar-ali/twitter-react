@@ -1,0 +1,80 @@
+.top {
+  position: sticky;
+  top: 0;
+  min-width: 43.7%;
+  background-color: white;
+  border-left: 1px solid #F0F1F1;
+  border-right: 1px solid #F0F1F1;
+}
+
+.top-div {
+  padding-left: 30px;
+  padding-top: 5px;
+}
+
+.top-name {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0
+}
+
+.top-tweets {
+  margin: 0;
+  color: rgb(83, 100, 113);
+  font-size: 13px;
+}
+
+.top-start {
+  padding: 8px 20px 0px;
+  font-size: 20px;
+}
+
+.top-start-icon {
+  padding: 5px;
+  text-align: center;
+}
+
+.top-start-icon:hover {
+  padding: 5px;
+  border-radius: 25px;
+  background: lightgray;
+  cursor: pointer;
+}
+
+.hover-effect {
+  padding-top: 10px;
+}
+
+.hover-effect:hover {
+  background: rgb(235, 234, 234);
+  cursor: pointer;
+}
+
+.active-follow {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+
+}
+
+
+
+
+
+
+.nonactive-follow {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+  color: rgb(83, 100, 113);
+
+}
+
+.botton-border {
+
+  height: 4px;
+  background-color: rgb(29, 161, 242);
+  border-radius: 5px;
+  margin-top: 10px;
+}

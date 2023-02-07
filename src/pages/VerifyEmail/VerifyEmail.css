@@ -1,0 +1,21 @@
+.containerr {
+  width: 70vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.green_btnn {
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  background-color: rgb(29, 161, 242);
+  border-radius: 20px;
+  width: 180px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+}
