@@ -27,6 +27,7 @@ const Signup = () => {
     form.append("prof_pic", data.prof_pic);
     form.append("confirm_success_url", "-");
     registerUser(form).then(() => setLoading(false));
+
   };
 
   return (

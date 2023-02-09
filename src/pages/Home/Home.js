@@ -64,26 +64,27 @@ export default function Home() {
             <Row className="pb-2">
               <CreateTweet
                 id="home"
-                user_pic={(data && data.thumbnail) || defaultPic}
+                user_pic={(data && data.prof_pic) || defaultPic}
                 loginUserId={loginUserId}
               />
             </Row>
           </Container>
           <Row>
-            {tweets.map((tweet) => {
-              return (
-                <div key={tweet.id}>
-                  <Tweet
-                    key={tweet.id}
-                    tweet_id={tweet.id}
-                    loginId={loginUserId}
-                    following={tweet.user.followers.some(
-                      (user) => user.user === loginUserId
-                    )}
-                  />
-                </div>
-              );
-            })}
+            {tweets &&
+              tweets.map((tweet) => {
+                return (
+                  <div key={tweet.id}>
+                    <Tweet
+                      key={tweet.id}
+                      tweet_id={tweet.id}
+                      loginId={loginUserId}
+                      following={tweet.user.followers.some(
+                        (user) => user.user === loginUserId
+                      )}
+                    />
+                  </div>
+                );
+              })}
           </Row>
         </Col>
 

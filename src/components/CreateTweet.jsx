@@ -9,6 +9,7 @@ import { createTweet } from "../api/tweet";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function CreateTweet({ id, user_pic, onHide, loginUserId }) {
   const dispatch = useDispatch();
@@ -26,16 +27,20 @@ export default function CreateTweet({ id, user_pic, onHide, loginUserId }) {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // const removeImage = (index) => {
-  //   const remainingUrls = imageUrl.filter((item, e) => e !== index);
-  //   setImageUrl(remainingUrls);
-  //   const remainingImages = images.filter((item, e) => e !== index);
-  //   setImages(remainingImages);
-  // };
+  const removeImage = (index) => {
+    // const remainingUrls = imageUrl.filter((item, e) => e !== index);
+    // setImageUrl([remainingUrls]);
+    // const remainingImages = images.filter((item, e) => e !== index);
+    // setImages(remainingImages);
+    setImageUrl([]);
+    setImages([]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (data.caption === "") {
+      toast.error("caption can not be blank", { autoClose: 2000 });
+    }
     const form = new FormData();
     form.append("caption", data.caption);
     form.append("pictures", images);
@@ -74,10 +79,7 @@ export default function CreateTweet({ id, user_pic, onHide, loginUserId }) {
               imageUrl.map((image, index) => {
                 return (
                   <div key={image} className="me-2">
-                    <button
-                      // onClick={() => removeImage(index)}
-                      className="remove"
-                    >
+                    <button onClick={removeImage} className="remove">
                       {<GiCancel />}
                     </button>
                     <div className="d-flex">
@@ -142,17 +144,11 @@ export default function CreateTweet({ id, user_pic, onHide, loginUserId }) {
             <button
               type="button"
               className={
-                (data.caption !== "" && percentage <= 100) ||
-                imageUrl.length > 0
+                data.caption !== "" && percentage <= 100
                   ? "tweet-btn"
                   : "disabled"
               }
-              disabled={
-                !(
-                  (data.caption !== "" && percentage <= 100) ||
-                  imageUrl.length > 0
-                )
-              }
+              disabled={!(data.caption !== "" && percentage <= 100)}
               onClick={handleSubmit}
             >
               Tweet

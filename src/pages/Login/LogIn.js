@@ -17,7 +17,7 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    logIn(data, dispatch).then((res) => navigate("/home"));
+    logIn(data, dispatch).then((res) => res === "success" && navigate("/home"));
   };
 
   return (

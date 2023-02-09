@@ -40,7 +40,7 @@ export default function Profile() {
       <Col lg={8}>
         {data ? (
           <Container>
-            {tweets.length > 0 && (
+            {tweets && (
               <Top
                 topField={data.name}
                 lowerField={`${tweets.length} Tweets`}
@@ -111,6 +111,7 @@ export default function Profile() {
                   />
                 </Col>
               ) : (
+                tweets &&
                 tweets.map((post) => {
                   return (
                     <div key={post.id}>

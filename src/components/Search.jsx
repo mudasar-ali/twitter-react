@@ -61,6 +61,7 @@ export default function Search({ show, onHide, showTweets }) {
         </div>
         {search.length > 0 &&
           search.map((user) => {
+            console.log(user.prof_pic);
             return (
               <Container style={{ border: "1px solid #F0F1F1" }} key={user.id}>
                 <Row className="p-2" key={user.id}>
