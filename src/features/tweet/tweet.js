@@ -6,6 +6,7 @@ const tweetSlice = createSlice({
     loading: false,
     tweets: [],
     tweetDetail: { tweet: null, comments: [] },
+    searchedTweets: [],
   },
   reducers: {
     request: (state) => {
@@ -255,6 +256,9 @@ const tweetSlice = createSlice({
         };
       },
     },
+    searchTweets: (state, action) => {
+      state.searchedTweets = action.payload;
+    },
     fail: (state) => {
       Object.assign(state, { loading: false });
     },
@@ -273,6 +277,7 @@ export const {
   commentCreate,
   commentUpdate,
   commentDelete,
+  searchTweets,
   fail,
 } = tweetSlice.actions;
 export default tweetSlice.reducer;

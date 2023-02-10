@@ -234,12 +234,13 @@ export const getFolllowers = async (id, disptach, param) => {
   }
 };
 
-export const searchUsers = async (name) => {
+export const searchUsers = async (name, tweet) => {
   try {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/users/search", {
       withCredentials: true,
       params: {
         value: name,
+        tweet,
       },
     });
   } catch (err) {

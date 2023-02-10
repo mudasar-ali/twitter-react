@@ -123,3 +123,7 @@
   font-weight: bold;
   border: 1px solid black;
 }
+
+.suggestion-hover:hover {
+  cursor: pointer;
+}

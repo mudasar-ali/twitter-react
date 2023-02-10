@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiCancel } from "react-icons/gi";
 
 import { searchUsers } from "../api/user";
 import FollowingBtn from "./FollowingBtn";
 import defaultPic from "../images/profile.webp";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getTweetsData } from "../features/tweet/tweet";
 
 export default function Search({ show, onHide, showTweets }) {
   const loginUserId = useSelector((state) => state.user.loginUserId);
   const [search, setSearch] = useState([]);
   const [nameVal, setName] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const searchData = setTimeout(() => {
@@ -30,6 +33,14 @@ export default function Search({ show, onHide, showTweets }) {
   const handleModalClose = () => {
     onHide();
     setSearch([]);
+    setName("");
+  };
+
+  const searchTweet = () => {
+    searchUsers(nameVal, "tweet").then((res) => {
+      dispatch(getTweetsData(res.data.tweets));
+      navigate(`/search_tweets/${nameVal}`);
+    });
   };
 
   return (
@@ -59,9 +70,17 @@ export default function Search({ show, onHide, showTweets }) {
             autoFocus
           />
         </div>
-        {search.length > 0 &&
+        {search.length === 0 && nameVal !== "" ? (
+          <Row>
+            <Col
+              onClick={searchTweet}
+              className="text-center suggestion-username suggestion-hover"
+            >
+              Try searching for "{nameVal}"
+            </Col>
+          </Row>
+        ) : (
           search.map((user) => {
-            console.log(user.prof_pic);
             return (
               <Container style={{ border: "1px solid #F0F1F1" }} key={user.id}>
                 <Row className="p-2" key={user.id}>
@@ -91,11 +110,12 @@ export default function Search({ show, onHide, showTweets }) {
                 </Row>
               </Container>
             );
-          })}
-        {search.length === 0 && (
+          })
+        )}
+        {nameVal === "" && (
           <Row>
             <Col className="text-center suggestion-username">
-              Try searching for people with name or username
+              Try searching for topics and people with name and username
             </Col>
           </Row>
         )}

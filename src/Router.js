@@ -19,6 +19,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { loggedInDetail } from "./api/user";
 import { getLoggenInUserId } from "./features/user/user";
+import SearchTweets from "./pages/SearchTweets/SearchTweets";
 
 const HandleRoutes = () => {
   const token = localStorage.getItem("token");
@@ -89,6 +90,10 @@ const HandleRoutes = () => {
               <Route
                 path="/:id/:followDetails"
                 element={<Protected component={<FollowDetails />} />}
+              />
+              <Route
+                path="/search_tweets/:query"
+                element={<Protected component={<SearchTweets />} />}
               />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
