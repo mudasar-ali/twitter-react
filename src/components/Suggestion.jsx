@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import Search from "./Search";
 import defaultPic from "../images/profile.webp";
 
+
+
 export default function Suggestion() {
   const [bg, setBg] = useState(false);
   const [suggestedData, setSuggestedData] = useState();
@@ -39,6 +41,7 @@ export default function Suggestion() {
           <IoMdSearch />
         </span>
         <input type="text" placeholder="search Twitter"></input>
+
       </div>
       {suggestedData && suggestedData.length > 0 && (
         <div className="follow-suggestion">

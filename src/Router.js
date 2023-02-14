@@ -21,6 +21,7 @@ import { loggedInDetail } from "./api/user";
 import { getLoggenInUserId } from "./features/user/user";
 import SearchTweets from "./pages/SearchTweets/SearchTweets";
 
+
 const HandleRoutes = () => {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
@@ -95,6 +96,7 @@ const HandleRoutes = () => {
                 path="/search_tweets/:query"
                 element={<Protected component={<SearchTweets />} />}
               />
+
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Col>

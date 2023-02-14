@@ -10,9 +10,14 @@ import defaultPic from "../images/profile.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { getTweetsData } from "../features/tweet/tweet";
 
+import { AudioRecorder } from "react-audio-voice-recorder";
+import { Audio } from "react-loader-spinner";
+import axios from "axios";
+
 export default function Search({ show, onHide, showTweets }) {
   const loginUserId = useSelector((state) => state.user.loginUserId);
   const [search, setSearch] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [nameVal, setName] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,6 +48,22 @@ export default function Search({ show, onHide, showTweets }) {
     });
   };
 
+  const addAudioElement = async (blob) => {
+    setLoading(true);
+    const form = new FormData();
+    form.append("audio_file", blob);
+
+    const res = await axios.post(
+      process.env.REACT_APP_BASE_URL + "/users/transcribe",
+      form,
+      {
+        withCredentials: true,
+      }
+    );
+    setName(res.data.convert_text);
+    setLoading(false);
+  };
+
   return (
     <Modal
       show={show}
@@ -60,14 +81,29 @@ export default function Search({ show, onHide, showTweets }) {
         </button>
       </Modal.Header>
       <Modal.Body>
-        <div className="comment">
+        <div className="comment d-flex text-between">
           <input
             type="text"
             placeholder="Search Users"
             name="name"
             onChange={(e) => setName(e.target.value)}
             autoComplete="off"
+            value={nameVal}
             autoFocus
+          />
+          {loading && (
+            <Audio
+              height="40"
+              width="50"
+              radius="90"
+              color="blue"
+              ariaLabel="three-dots-loading"
+              wrapperStyle
+              wrapperClass
+            />
+          )}
+          <AudioRecorder
+            onRecordingComplete={(blob) => addAudioElement(blob)}
           />
         </div>
         {search.length === 0 && nameVal !== "" ? (

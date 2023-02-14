@@ -33,7 +33,7 @@
      .comment input {
        border: none;
        outline: none;
-       line-height: 4;
+       /* line-height: 4; */
        width: 100%;
      }
 
